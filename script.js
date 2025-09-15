@@ -28,4 +28,11 @@ document.addEventListener("DOMContentLoaded", function() {
     .catch(error => console.error("Sidebar kon niet geladen worden:", error));
 });
 
+const menuBtn = document.querySelector('.menu-btn');
+const sidebar = document.querySelector('.sidebar');
+
+menuBtn.addEventListener('click', () => {
+  sidebar.classList.toggle('active');
+});
+
 
