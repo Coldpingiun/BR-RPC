@@ -11,28 +11,28 @@ function toggleDarkMode() {
 }
 
 // Bij laden van de pagina voorkeur toepassen
-window.onload = function() {
+window.addEventListener("DOMContentLoaded", function() {
   const savedTheme = localStorage.getItem("theme");
   if (savedTheme === "dark") {
     document.body.classList.add("dark");
   }
-};
 
-// Sidebar automatisch inladen
-document.addEventListener("DOMContentLoaded", function() {
+  // Sidebar automatisch inladen
   fetch("sidebar.html")
     .then(response => response.text())
     .then(data => {
       document.getElementById("sidebar-container").innerHTML = data;
+
+      // Nu bestaat de sidebar, selecteer hem
+      const sidebar = document.querySelector('.sidebar');
+      const menuBtn = document.querySelector('.menu-btn');
+
+      if (menuBtn && sidebar) {
+        // Hamburger knop functionaliteit
+        menuBtn.addEventListener('click', () => {
+          sidebar.classList.toggle('active');
+        });
+      }
     })
     .catch(error => console.error("Sidebar kon niet geladen worden:", error));
 });
-
-const menuBtn = document.querySelector('.menu-btn');
-const sidebar = document.querySelector('.sidebar');
-
-menuBtn.addEventListener('click', () => {
-  sidebar.classList.toggle('active');
-});
-
-
