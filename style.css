@@ -131,3 +131,47 @@ nav ul {
   margin: 0;             /* standaard marge weghalen */
   font-size: 2rem;
 }
+
+/* Mobiel menu knop (hamburger) */
+.menu-btn {
+  display: none; /* standaard verbergen op desktop */
+  position: fixed;
+  top: 15px;
+  left: 20px;
+  z-index: 1100;
+  background: #ddd;
+  border: none;
+  padding: 10px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Sidebar verborgen op mobiel */
+.sidebar.hidden {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .menu-btn {
+    display: block; /* alleen zichtbaar op mobiel */
+  }
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 220px;
+    height: 100%;
+    background: #f4f4f4;
+    padding: 20px;
+    z-index: 1000;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+  }
+  .sidebar.active {
+    transform: translateX(0); /* schuift in beeld */
+  }
+  .content {
+    margin-left: 0; /* content altijd fullscreen */
+    padding: 15px;
+  }
+}
