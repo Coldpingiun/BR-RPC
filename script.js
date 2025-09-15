@@ -17,3 +17,15 @@ window.onload = function() {
     document.body.classList.add("dark");
   }
 };
+
+// Sidebar automatisch inladen
+document.addEventListener("DOMContentLoaded", function() {
+  fetch("sidebar.html")
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById("sidebar-container").innerHTML = data;
+    })
+    .catch(error => console.error("Sidebar kon niet geladen worden:", error));
+});
+
+
