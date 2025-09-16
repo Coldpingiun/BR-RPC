@@ -6,7 +6,7 @@ fetch('sidebar.html')
   .then(data => {
     document.getElementById('sidebar-container').innerHTML = data;
 
-    // Voeg hier de dark mode listener pas toe nadat sidebar is ingeladen
+    // Voeg dark mode listener toe nadat sidebar is ingeladen
     document.querySelectorAll(".toggle-btn").forEach(btn => {
       btn.addEventListener("click", toggleDarkMode);
     });
@@ -18,7 +18,7 @@ fetch('sidebar.html')
 function checkPin() {
   const pinInput = document.getElementById("pin");
   const pin = pinInput.value;
-  const juistePin = "1234"; // pas dit aan naar jouw pincode
+  const juistePin = "1234"; // pas aan
   const errorMsg = document.getElementById("error");
 
   if (pin === juistePin) {
@@ -26,7 +26,7 @@ function checkPin() {
     document.getElementById("pincodeBox").style.display = "none";
   } else {
     errorMsg.textContent = "Foute code!";
-    pinInput.value = ""; 
+    pinInput.value = "";
     pinInput.focus();
   }
 }
@@ -48,7 +48,6 @@ document.getElementById("pin").addEventListener("input", function() {
 // ==================
 function toggleDarkMode() {
   document.body.classList.toggle("dark");
-
   if (document.body.classList.contains("dark")) {
     localStorage.setItem("darkMode", "enabled");
   } else {
@@ -56,9 +55,7 @@ function toggleDarkMode() {
   }
 }
 
-// ==================
-// Dark mode bij laden toepassen
-// ==================
+// Dark mode toepassen bij laden
 window.addEventListener("DOMContentLoaded", function() {
   if (localStorage.getItem("darkMode") === "enabled") {
     document.body.classList.add("dark");
