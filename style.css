@@ -2,10 +2,12 @@
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  display: flex;
+  display: flex; /* sidebar + main content */
   background: #fff;
   color: #333;
   transition: background 0.3s, color 0.3s;
+  min-height: 100vh;
+  box-sizing: border-box;
 }
 
 /* Sidebar */
@@ -18,7 +20,10 @@ body {
   overflow-y: auto;
   box-shadow: 2px 0 5px rgba(0,0,0,0.1);
 }
-.sidebar h2 { font-size: 18px; margin-bottom: 15px; }
+.sidebar h2 {
+  font-size: 18px;
+  margin-bottom: 15px;
+}
 .sidebar a {
   display: block;
   padding: 8px 10px;
@@ -28,16 +33,51 @@ body {
   border-radius: 5px;
   transition: background 0.2s;
 }
-.sidebar a:hover { background: #ddd; }
-
-/* Content */
-.content {
-  margin-left: 270px;
-  padding: 30px;
-  flex-grow: 1;
-  line-height: 1;
+.sidebar a:hover {
+  background: #ddd;
 }
-.content h1 { font-size: 28px; margin-top: 40px; line-height: 1.6; }
+
+/* Main content */
+.main {
+  flex: 1; /* neemt resterende breedte naast sidebar */
+  display: flex;
+  flex-direction: column;
+  align-items: center;      /* horizontaal centreren */
+  justify-content: center;  /* verticaal centreren */
+  min-height: 100vh;        /* hele schermhoogte gebruiken */
+  margin-left: 250px;       /* ruimte voor sidebar */
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.main h1 {
+  font-size: 28px;
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
+/* Pincode-box */
+#pincodeBox {
+  max-width: 400px;
+  width: 100%;
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background: #f9f9f9;
+  text-align: center;
+}
+
+/* Verborgen content */
+#geheim {
+  display: none;
+  margin-top: 20px;
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background: #fff;
+  max-width: 800px;
+  width: 100%;
+}
 
 /* Toggle button */
 .toggle-btn {
@@ -79,62 +119,31 @@ body.dark .toggle-btn {
   width: auto;
 }
 
-/* Zorg dat afbeeldingen en video's schalen */
+/* Afbeeldingen en video's schalen */
 img, video {
   max-width: 100%;
   height: auto;
 }
 
-/* Navigatie */
-nav ul {
-  display: flex;
-  gap: 20px;
-  list-style: none;
-  padding: 0;
-}
-
-/* Mobiele weergave */
-@media (max-width: 768px) {
-  /* Sidebar kleiner maken of verbergen */
-  .sidebar {
-    position: relative;
-    width: 100%;
-    height: auto;
-    box-shadow: none;
-  }
-  .content {
-    margin-left: 0;
-    padding: 15px;
-  }
-  nav ul {
-    flex-direction: column;
-    gap: 10px;
-  }
-  h1 {
-    font-size: 1.5rem;
-  }
-}
-
+/* Titelblok */
 .title-block {
   display: flex;
-  align-items: center;   /* logo en titel mooi uitgelijnd */
-  gap: 15px;             /* ruimte tussen logo en titel */
-  margin-bottom: 20px;   /* ruimte onder blok */
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 20px;
 }
-
 .title-block img {
-  height: 60px;          /* pas grootte naar wens aan */
+  height: 60px;
   width: auto;
 }
-
 .title-block h1 {
-  margin: 0;             /* standaard marge weghalen */
+  margin: 0;
   font-size: 2rem;
 }
 
 /* Mobiel menu knop (hamburger) */
 .menu-btn {
-  display: none; /* standaard verbergen op desktop */
+  display: none;
   position: fixed;
   top: 15px;
   left: 20px;
@@ -146,15 +155,9 @@ nav ul {
   cursor: pointer;
 }
 
-/* Sidebar verborgen op mobiel */
-.sidebar.hidden {
-  display: none;
-}
-
+/* Mobiele weergave */
 @media (max-width: 768px) {
-  .menu-btn {
-    display: block; /* alleen zichtbaar op mobiel */
-  }
+  /* Sidebar aanpassen */
   .sidebar {
     position: fixed;
     top: 0;
@@ -168,29 +171,36 @@ nav ul {
     transition: transform 0.3s ease;
   }
   .sidebar.active {
-    transform: translateX(0); /* schuift in beeld */
+    transform: translateX(0);
   }
-  .content {
-    margin-left: 0; /* content altijd fullscreen */
+
+  /* Main content aanpassen */
+  .main {
+    margin-left: 0;
     padding: 15px;
+    min-height: auto;
+    justify-content: flex-start;
+  }
+
+  /* Titels en menu */
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  nav ul {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .menu-btn {
+    display: block;
   }
 }
 
-.main {
+/* Navigatie */
+nav ul {
   display: flex;
-  flex-direction: column;
-  align-items: center; /* horizontaal centreren */
-  justify-content: center; /* verticaal centreren */
-  min-height: 80vh; /* zodat het midden van het scherm wordt bereikt */
-  padding: 20px;
+  gap: 20px;
+  list-style: none;
+  padding: 0;
 }
-
-#pincodeBox {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-
-
