@@ -1,30 +1,208 @@
 <!DOCTYPE html>
-<html lang="nl">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Trainer Handbook - BR:RPC</title>
-  <link rel="icon" sizes="16x16" href="BR_RPC_round.png">
-  <link rel="stylesheet" href="style.css">
-  <script src="script.js" defer></script>
+  <link rel="icon" sizes="16x16" href="images/BR_RPC_round.png">
   <style>
-    /* Extra styling voor pincode sectie */
+    /* Algemene stijl */
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      display: flex; /* sidebar + main content */
+      background: #fff;
+      color: #333;
+      transition: background 0.3s, color 0.3s;
+      min-height: 100vh;
+      box-sizing: border-box;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      width: 250px;
+      background: #f4f4f4;
+      height: 100vh;
+      padding: 20px;
+      position: fixed;
+      overflow-y: auto;
+      box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+    }
+    .sidebar h2 { font-size: 18px; margin-bottom: 15px; }
+    .sidebar a {
+      display: block;
+      padding: 8px 10px;
+      margin-bottom: 5px;
+      text-decoration: none;
+      color: inherit;
+      border-radius: 5px;
+      transition: background 0.2s;
+    }
+    .sidebar a:hover { background: #ddd; }
+
+    /* Main content */
+    .main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      margin-left: 250px;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+
+    .main h1 {
+      font-size: 28px;
+      margin-bottom: 20px;
+      line-height: 1.6;
+    }
+
+    /* Pincode-box */
     #pincodeBox {
-      margin: 20px;
+      max-width: 400px;
+      width: 100%;
       padding: 15px;
       border: 1px solid #ccc;
       border-radius: 8px;
       background: #f9f9f9;
-      max-width: 300px;
+      text-align: center;
     }
 
+    /* Verborgen content */
     #geheim {
-      display: none; /* standaard verborgen */
-      margin: 20px;
+      display: none;
+      margin-top: 20px;
       padding: 15px;
       border: 1px solid #ccc;
       border-radius: 8px;
       background: #fff;
+      max-width: 800px;
+      width: 100%;
+    }
+
+    /* Toggle button */
+    .toggle-btn {
+      display: inline-block;
+      padding: 8px 12px;
+      margin-bottom: 20px;
+      background: #ddd;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    /* Donker thema */
+    body.dark {
+      background: #1e1e1e;
+      color: #ddd;
+    }
+    body.dark .sidebar {
+      background: #2c2c2c;
+      color: #ddd;
+    }
+    body.dark .sidebar a:hover {
+      background: #444;
+    }
+    body.dark .toggle-btn {
+      background: #444;
+      color: #ddd;
+    }
+
+    /* Logo rechtsboven */
+    .logo {
+      position: fixed;
+      top: 15px;
+      right: 20px;
+      z-index: 1000;
+    }
+    .logo img {
+      height: 100px;
+      width: auto;
+    }
+
+    /* Afbeeldingen en video's schalen */
+    img, video {
+      max-width: 100%;
+      height: auto;
+    }
+
+    /* Titelblok */
+    .title-block {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+    .title-block img {
+      height: 60px;
+      width: auto;
+    }
+    .title-block h1 {
+      margin: 0;
+      font-size: 2rem;
+    }
+
+    /* Mobiel menu knop (hamburger) */
+    .menu-btn {
+      display: none;
+      position: fixed;
+      top: 15px;
+      left: 20px;
+      z-index: 1100;
+      background: #ddd;
+      border: none;
+      padding: 10px 12px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    /* Mobiele weergave */
+    @media (max-width: 768px) {
+      .sidebar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 220px;
+        height: 100%;
+        background: #f4f4f4;
+        padding: 20px;
+        z-index: 1000;
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+      }
+      .sidebar.active {
+        transform: translateX(0);
+      }
+
+      .main {
+        margin-left: 0;
+        padding: 15px;
+        min-height: auto;
+        justify-content: flex-start;
+      }
+
+      h1 {
+        font-size: 1.5rem;
+      }
+
+      nav ul {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .menu-btn {
+        display: block;
+      }
+    }
+
+    /* Navigatie */
+    nav ul {
+      display: flex;
+      gap: 20px;
+      list-style: none;
+      padding: 0;
     }
   </style>
 </head>
@@ -48,37 +226,45 @@
     <div id="geheim">
       <h2>Welkom bij de geheime sectie 🎉</h2>
       <p>Hier staat alle inhoud van het Trainer Handbook.</p>
-      <!-- Voeg hier je eigen content toe -->
     </div>
   </div>
 
   <script>
-  // Sidebar inladen
-  fetch('sidebar.html')
-    .then(response => response.text())
-    .then(data => {
-      document.getElementById('sidebar-container').innerHTML = data;
+    // Sidebar inladen
+    fetch('sidebar.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('sidebar-container').innerHTML = data;
+      });
+
+    // Pincode check
+    function checkPin() {
+      const pinInput = document.getElementById("pin");
+      const pin = pinInput.value;
+      const juistePin = "1234"; // pas dit aan naar jouw pincode
+      const errorMsg = document.getElementById("error");
+
+      if (pin === juistePin) {
+        document.getElementById("geheim").style.display = "block";
+        document.getElementById("pincodeBox").style.display = "none";
+      } else {
+        errorMsg.textContent = "Foute code!";
+        pinInput.value = ""; // leegmaken voor nieuwe poging
+        pinInput.focus();    // cursor terugzetten
+      }
+    }
+
+    // Enter-toets detecteren
+    document.getElementById("pin").addEventListener("keypress", function(event) {
+      if (event.key === "Enter") {
+        checkPin();
+      }
     });
 
-  // Pincode check
-  function checkPin() {
-    const pin = document.getElementById("pin").value;
-    const juistePin = "1234"; // pas dit aan naar jouw pincode
-
-    if (pin === juistePin) {
-      document.getElementById("geheim").style.display = "block";
-      document.getElementById("pincodeBox").style.display = "none";
-    } else {
-      document.getElementById("error").textContent = "Foute code!";
-    }
-  }
-
-  // Enter-toets detecteren voor pincode
-  document.getElementById("pin").addEventListener("keypress", function(event) {
-    if (event.key === "Enter") {
-      checkPin();
-    }
-  });
-</script>
+    // Foutmelding verwijderen bij typen
+    document.getElementById("pin").addEventListener("input", function() {
+      document.getElementById("error").textContent = "";
+    });
+  </script>
 </body>
 </html>
