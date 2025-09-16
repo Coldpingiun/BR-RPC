@@ -89,7 +89,7 @@ body {
   background: #eee;
   border: none;
   font-size: 24px;
-  padding: 8px 12px;
+  padding: 6px 10px;
   border-radius: 5px;
   cursor: pointer;
   z-index: 1100; /* boven sidebar */
@@ -119,3 +119,4 @@ body {
     display: block;
   }
 }
+
