@@ -44,20 +44,29 @@ document.getElementById("pin").addEventListener("input", function() {
 });
 
 // ==================
-// Dark mode toggle + onthouden
-// ==================
-function toggleDarkMode() {
-  document.body.classList.toggle("dark");
-  if (document.body.classList.contains("dark")) {
-    localStorage.setItem("darkMode", "enabled");
-  } else {
-    localStorage.setItem("darkMode", "disabled");
-  }
-}
-
 // Dark mode toepassen bij laden
+// ==================
 window.addEventListener("DOMContentLoaded", function() {
+  // Dark mode onthouden
   if (localStorage.getItem("darkMode") === "enabled") {
     document.body.classList.add("dark");
   }
+
+  // Toggle-btn toevoegen na sidebar is ingeladen
+  const sidebar = document.getElementById("sidebar-container");
+  if (sidebar) {
+    const toggleBtn = sidebar.querySelector(".toggle-btn");
+    if (toggleBtn) {
+      toggleBtn.addEventListener("click", function() {
+        document.body.classList.toggle("dark");
+        if (document.body.classList.contains("dark")) {
+          localStorage.setItem("darkMode", "enabled");
+        } else {
+          localStorage.setItem("darkMode", "disabled");
+        }
+      });
+    }
+  }
 });
+
+
