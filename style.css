@@ -40,7 +40,7 @@ body {
 .content h1 { font-size: 28px; margin-top: 40px; line-height: 1.6; }
 
 /* Main content */
-.main {
+.content {
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -101,8 +101,8 @@ body {
   .sidebar.active {
     transform: translateX(0);
   }
-  .main {
-    margin-left: auto;
+  .content {
+    margin-left: 0;
     padding: 15px;
     justify-content: flex-start;
     min-height: auto;
@@ -136,6 +136,7 @@ body {
     display: block; /* zichtbaar als open */
   }
 }
+
 
 
 
