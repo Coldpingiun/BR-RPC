@@ -109,5 +109,34 @@ body {
   }
 }
 
+/* Standaard verbergen */
+.hamburger {
+  display: none;
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  background: #eee;
+  border: none;
+  font-size: 24px;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  z-index: 1100; /* boven sidebar */
+}
+
+/* Alleen zichtbaar op mobiel */
+@media (max-width: 768px) {
+  .hamburger {
+    display: block;
+  }
+  .sidebar {
+    display: none; /* standaard verborgen */
+  }
+  .sidebar.active {
+    display: block; /* zichtbaar als open */
+  }
+}
+
+
 
 
