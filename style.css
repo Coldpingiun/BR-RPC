@@ -30,16 +30,14 @@ body {
 }
 .sidebar a:hover { background: #ddd; }
 
-.content{
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: left; /* links centreren */
-  justify-content: left; /* verticaal centreren */
-  margin-left: 250px; /* ruimte voor sidebar */
+/* Content */
+.content {
+  margin-left: 270px;
   padding: 30px;
-  box-sizing: border-box;
+  flex-grow: 1;
+  line-height: 1;
 }
+.content h1 { font-size: 28px; margin-top: 40px; line-height: 1.6; }
 
 /* Main content */
 .main {
@@ -127,4 +125,5 @@ body.dark .toggle-btn {
     min-height: auto;
   }
 }
+
 
