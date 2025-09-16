@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trainer handbook - BR:RPC</title>
+  <link rel="icon" sizes="16x16" href="BR_RPC_round.png">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <div class="sidebar">
+    <!-- Logo + naam boven -->
+    <div class="sidebar-header">
+      <img src="BR_RPC_round.png" alt="Logo" width="100px">
+      <h2>BR:RPC</h2>
+    </div>
+
+<!-- trainer_handbook.html -->
+<h2>Trainer Handbook</h2>
+
+<div id="pincodeBox">
+  <p>Voer pincode in:</p>
+  <input type="password" id="pin" placeholder="****">
+  <button onclick="checkPin()">Bevestigen</button>
+  <p id="error" style="color:red;"></p>
+</div>
+
+<div id="geheim" style="display:none;">
+  <h3>Geheime content</h3>
+  <p>Hier staat alles wat alleen toegankelijk mag zijn.</p>
+</div>
+
+<script>
+  function checkPin() {
+    const pin = document.getElementById("pin").value;
+    if (pin === "1234") {
+      document.getElementById("geheim").style.display = "block";
+      document.getElementById("pincodeBox").style.display = "none";
+    } else {
+      document.getElementById("error").textContent = "Foute code!";
+    }
+  }
+</script>
+</body>
