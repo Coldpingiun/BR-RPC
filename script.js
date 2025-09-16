@@ -6,10 +6,6 @@ fetch('sidebar.html')
   .then(data => {
     document.getElementById('sidebar-container').innerHTML = data;
 
-    // Voeg dark mode listener toe nadat sidebar is ingeladen
-    document.querySelectorAll(".toggle-btn").forEach(btn => {
-      btn.addEventListener("click", toggleDarkMode);
-    });
   });
 
 // ==================
@@ -43,30 +39,6 @@ document.getElementById("pin").addEventListener("input", function() {
   document.getElementById("error").textContent = "";
 });
 
-// ==================
-// Dark mode toepassen bij laden
-// ==================
-window.addEventListener("DOMContentLoaded", function() {
-  // Dark mode onthouden
-  if (localStorage.getItem("darkMode") === "enabled") {
-    document.body.classList.add("dark");
-  }
 
-  // Toggle-btn toevoegen na sidebar is ingeladen
-  const sidebar = document.getElementById("sidebar-container");
-  if (sidebar) {
-    const toggleBtn = sidebar.querySelector(".toggle-btn");
-    if (toggleBtn) {
-      toggleBtn.addEventListener("click", function() {
-        document.body.classList.toggle("dark");
-        if (document.body.classList.contains("dark")) {
-          localStorage.setItem("darkMode", "enabled");
-        } else {
-          localStorage.setItem("darkMode", "disabled");
-        }
-      });
-    }
-  }
-});
 
 
