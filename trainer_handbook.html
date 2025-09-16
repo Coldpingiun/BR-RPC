@@ -17,6 +17,7 @@
       background: #f9f9f9;
       max-width: 300px;
     }
+
     #geheim {
       display: none; /* standaard verborgen */
       margin: 20px;
@@ -47,14 +48,22 @@
     <div id="geheim">
       <h2>Welkom bij de geheime sectie 🎉</h2>
       <p>Hier staat alle inhoud van het Trainer Handbook.</p>
-      <!-- Je eigen content hier -->
+      <!-- Voeg hier je eigen content toe -->
     </div>
   </div>
 
   <script>
+    // Sidebar inladen
+    fetch('sidebar.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('sidebar-container').innerHTML = data;
+      });
+
+    // Pincode check
     function checkPin() {
       const pin = document.getElementById("pin").value;
-      const juistePin = "1234"; // ✨ verander dit naar jouw pincode
+      const juistePin = "1234"; // ✨ verander dit naar jouw gewenste pincode
 
       if (pin === juistePin) {
         document.getElementById("geheim").style.display = "block";
