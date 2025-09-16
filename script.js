@@ -39,6 +39,12 @@ document.getElementById("pin").addEventListener("input", function() {
   document.getElementById("error").textContent = "";
 });
 
+function toggleSidebar() {
+  document.querySelector(".sidebar").classList.toggle("active");
+}
+
+
+
 
 
 
