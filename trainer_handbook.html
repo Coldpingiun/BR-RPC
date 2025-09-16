@@ -53,25 +53,32 @@
   </div>
 
   <script>
-    // Sidebar inladen
-    fetch('sidebar.html')
-      .then(response => response.text())
-      .then(data => {
-        document.getElementById('sidebar-container').innerHTML = data;
-      });
+  // Sidebar inladen
+  fetch('sidebar.html')
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById('sidebar-container').innerHTML = data;
+    });
 
-    // Pincode check
-    function checkPin() {
-      const pin = document.getElementById("pin").value;
-      const juistePin = "1234"; // ✨ verander dit naar jouw gewenste pincode
+  // Pincode check
+  function checkPin() {
+    const pin = document.getElementById("pin").value;
+    const juistePin = "1234"; // pas dit aan naar jouw pincode
 
-      if (pin === juistePin) {
-        document.getElementById("geheim").style.display = "block";
-        document.getElementById("pincodeBox").style.display = "none";
-      } else {
-        document.getElementById("error").textContent = "Foute code!";
-      }
+    if (pin === juistePin) {
+      document.getElementById("geheim").style.display = "block";
+      document.getElementById("pincodeBox").style.display = "none";
+    } else {
+      document.getElementById("error").textContent = "Foute code!";
     }
-  </script>
+  }
+
+  // Enter-toets detecteren voor pincode
+  document.getElementById("pin").addEventListener("keypress", function(event) {
+    if (event.key === "Enter") {
+      checkPin();
+    }
+  });
+</script>
 </body>
 </html>
