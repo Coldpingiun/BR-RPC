@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Trainer Handbook - BR:RPC</title>
-  <link rel="icon" sizes="16x16" href="images/BR_RPC_round.png">
+  <link rel="icon" sizes="16x16" href="BR_RPC_round.png">
   <style>
     /* Algemene stijl */
     body {
@@ -250,7 +250,7 @@
       } else {
         errorMsg.textContent = "Foute code!";
         pinInput.value = ""; // leegmaken voor nieuwe poging
-        pinInput.focus();    // cursor terugzetten
+        pinInput.focus();
       }
     }
 
@@ -264,6 +264,14 @@
     // Foutmelding verwijderen bij typen
     document.getElementById("pin").addEventListener("input", function() {
       document.getElementById("error").textContent = "";
+    });
+
+    // Dark mode toggle
+    function toggleDarkMode() {
+      document.body.classList.toggle("dark");
+    }
+    document.querySelectorAll(".toggle-btn").forEach(btn => {
+      btn.addEventListener("click", toggleDarkMode);
     });
   </script>
 </body>
