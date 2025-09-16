@@ -30,15 +30,6 @@ body {
 }
 .sidebar a:hover { background: #ddd; }
 
-/* Content */
-.content {
-  margin-left: 270px;
-  padding: 30px;
-  flex-grow: 1;
-  line-height: 1;
-}
-.content h1 { font-size: 28px; margin-top: 40px; line-height: 1.6; }
-
 /* Main content */
 .content {
   flex: 1;
@@ -136,6 +127,7 @@ body {
     display: block; /* zichtbaar als open */
   }
 }
+
 
 
 
