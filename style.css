@@ -6,6 +6,8 @@ body {
   background: #fff;
   color: #333;
   transition: background 0.3s, color 0.3s;
+  min-height: 100vh;
+  box-sizing: border-box;
 }
 
 /* Sidebar */
@@ -33,16 +35,16 @@ body {
 }
 .sidebar a:hover { background: #ddd; }
 
-/* Main content */
+/* Content */
 .content {
   flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 80vh;
-  margin-left: 250px; /* ruimte voor sidebar op desktop */
-  padding: 30px;
+  min-height: 100vh;
+  margin-left: 250px;
+  padding: 20px;
   box-sizing: border-box;
 }
 
@@ -84,20 +86,41 @@ body {
 .hamburger {
   display: none;
   position: fixed;
-  top: 10px;
-  left: 10px;
-  background: #eee;
+  top: 15px;
+  left: 20px;
+  z-index: 1100;
+  background: #ddd;
   border: none;
-  font-size: 20px;
-  padding: 0px 6px;
+  padding: 10px 12px;
   border-radius: 5px;
   cursor: pointer;
-  z-index: 1100;
 }
 
-/* ===== Mobiele weergave ===== */
+/* Donker thema */
+body.dark {
+  background: #1e1e1e;
+  color: #ddd;
+}
+body.dark .sidebar {
+  background: #2c2c2c;
+  color: #ddd;
+}
+body.dark .sidebar a:hover {
+  background: #444;
+}
+body.dark .toggle-btn {
+  background: #444;
+  color: #ddd;
+}
+
+/* Afbeeldingen en video's schalen */
+img, video {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Mobiele weergave */
 @media (max-width: 768px) {
-  /* Sidebar schuift uit */
   .sidebar {
     width: 220px;
     transform: translateX(-100%);
@@ -107,17 +130,14 @@ body {
     transform: translateX(0);
   }
 
-  /* Content neemt volle breedte */
   .content {
     margin-left: 0;
     padding: 15px;
     align-items: flex-start;
+    justify-content: flex-start;
   }
 
-  /* Hamburger zichtbaar */
   .hamburger {
     display: block;
   }
 }
-
-
