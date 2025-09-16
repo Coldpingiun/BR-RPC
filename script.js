@@ -14,7 +14,7 @@ fetch('sidebar.html')
 function checkPin() {
   const pinInput = document.getElementById("pin");
   const pin = pinInput.value;
-  const juistePin = "1234"; // pas aan
+  const juistePin = "ST38"; // pas aan
   const errorMsg = document.getElementById("error");
 
   if (pin === juistePin) {
@@ -42,6 +42,7 @@ document.getElementById("pin").addEventListener("input", function() {
 function toggleSidebar() {
   document.querySelector(".sidebar").classList.toggle("active");
 }
+
 
 
 
