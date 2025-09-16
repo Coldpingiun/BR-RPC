@@ -175,3 +175,18 @@ nav ul {
     padding: 15px;
   }
 }
+
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* horizontaal centreren */
+  justify-content: center; /* verticaal centreren */
+  min-height: 80vh; /* zodat het midden van het scherm wordt bereikt */
+  padding: 20px;
+}
+
+#pincodeBox {
+  max-width: 400px;
+  width: 100%;
+}
+
