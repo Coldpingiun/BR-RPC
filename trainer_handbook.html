@@ -1,45 +1,68 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="nl">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Trainer handbook - BR:RPC</title>
-  <link rel="icon" sizes="16x16" href="BR_RPC_round.png">
+  <title>Trainer Handbook - BR:RPC</title>
+  <link rel="icon" sizes="16x16" href="images/BR_RPC_round.png">
   <link rel="stylesheet" href="style.css">
   <script src="script.js" defer></script>
+  <style>
+    /* Extra styling voor pincode sectie */
+    #pincodeBox {
+      margin: 20px;
+      padding: 15px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      background: #f9f9f9;
+      max-width: 300px;
+    }
+    #geheim {
+      display: none; /* standaard verborgen */
+      margin: 20px;
+      padding: 15px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      background: #fff;
+    }
+  </style>
 </head>
 <body>
-  <div class="sidebar">
-    <!-- Logo + naam boven -->
-    <div class="sidebar-header">
-      <img src="BR_RPC_round.png" alt="Logo" width="100px">
-      <h2>BR:RPC</h2>
+  <!-- Sidebar wordt hier ingeladen -->
+  <div id="sidebar-container"></div>
+
+  <!-- Main content -->
+  <div class="main">
+    <h1>Trainer Handbook</h1>
+
+    <!-- Pincode invoer -->
+    <div id="pincodeBox">
+      <p>Voer de pincode in om toegang te krijgen:</p>
+      <input type="password" id="pin" placeholder="****">
+      <button onclick="checkPin()">Bevestigen</button>
+      <p id="error" style="color:red;"></p>
     </div>
 
-<!-- trainer_handbook.html -->
-<h2>Trainer Handbook</h2>
+    <!-- Verborgen content -->
+    <div id="geheim">
+      <h2>Welkom bij de geheime sectie 🎉</h2>
+      <p>Hier staat alle inhoud van het Trainer Handbook.</p>
+      <!-- Je eigen content hier -->
+    </div>
+  </div>
 
-<div id="pincodeBox">
-  <p>Voer pincode in:</p>
-  <input type="password" id="pin" placeholder="****">
-  <button onclick="checkPin()">Bevestigen</button>
-  <p id="error" style="color:red;"></p>
-</div>
+  <script>
+    function checkPin() {
+      const pin = document.getElementById("pin").value;
+      const juistePin = "1234"; // ✨ verander dit naar jouw pincode
 
-<div id="geheim" style="display:none;">
-  <h3>Geheime content</h3>
-  <p>Hier staat alles wat alleen toegankelijk mag zijn.</p>
-</div>
-
-<script>
-  function checkPin() {
-    const pin = document.getElementById("pin").value;
-    if (pin === "1234") {
-      document.getElementById("geheim").style.display = "block";
-      document.getElementById("pincodeBox").style.display = "none";
-    } else {
-      document.getElementById("error").textContent = "Foute code!";
+      if (pin === juistePin) {
+        document.getElementById("geheim").style.display = "block";
+        document.getElementById("pincodeBox").style.display = "none";
+      } else {
+        document.getElementById("error").textContent = "Foute code!";
+      }
     }
-  }
-</script>
+  </script>
 </body>
+</html>
