@@ -10,7 +10,7 @@
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      display: flex; /* sidebar + main content */
+      display: flex;
       background: #fff;
       color: #333;
       transition: background 0.3s, color 0.3s;
@@ -207,8 +207,28 @@
   </style>
 </head>
 <body>
-  <!-- Sidebar wordt hier ingeladen -->
-  <div id="sidebar-container"></div>
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <div class="sidebar-header">
+      <img src="BR_RPC_round.png" alt="Logo" width="100px">
+      <h2>BR:RPC</h2>
+    </div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="regels.html">Rules</a>
+      <a href="violations.html">Handling Common Rule Violations</a>
+      <a href="melonly.html">Melonly</a>
+      <a href="roblox_group.html">Roblox Group</a>
+      <a href="command_guide.html">Command Guide</a>
+      <a href="punishment.html">Punishment Guide</a>
+      <a href="infraction.html">Infraction</a>
+      <a href="promotion.html">Promotion</a>
+      <a href="trainer_handbook.html">Trainer Handbook</a>
+    </nav>
+    <div class="sidebar-footer">
+      <button class="toggle-btn">🌙 Dark Mode</button>
+    </div>
+  </div>
 
   <!-- Main content -->
   <div class="main">
@@ -230,18 +250,11 @@
   </div>
 
   <script>
-    // Sidebar inladen
-    fetch('sidebar.html')
-      .then(response => response.text())
-      .then(data => {
-        document.getElementById('sidebar-container').innerHTML = data;
-      });
-
     // Pincode check
     function checkPin() {
       const pinInput = document.getElementById("pin");
       const pin = pinInput.value;
-      const juistePin = "1234"; // pas dit aan naar jouw pincode
+      const juistePin = "1234"; 
       const errorMsg = document.getElementById("error");
 
       if (pin === juistePin) {
@@ -276,12 +289,10 @@
       }
     }
 
-    document.querySelectorAll(".toggle-btn").forEach(btn => {
-      btn.addEventListener("click", toggleDarkMode);
-    });
+    document.querySelector(".toggle-btn").addEventListener("click", toggleDarkMode);
 
-    // Controle bij laden van de pagina
-    window.addEventListener("load", function() {
+    // Dark mode bij laden toepassen
+    window.addEventListener("DOMContentLoaded", function() {
       if (localStorage.getItem("darkMode") === "enabled") {
         document.body.classList.add("dark");
       }
