@@ -1,38 +1,66 @@
-// Dark mode in- en uitschakelen
-function toggleDarkMode() {
-  document.body.classList.toggle("dark");
+// ==================
+// Sidebar inladen
+// ==================
+fetch('sidebar.html')
+  .then(response => response.text())
+  .then(data => {
+    document.getElementById('sidebar-container').innerHTML = data;
 
-  // Onthouden in localStorage
-  if (document.body.classList.contains("dark")) {
-    localStorage.setItem("theme", "dark");
+    // Voeg hier de dark mode listener pas toe nadat sidebar is ingeladen
+    document.querySelectorAll(".toggle-btn").forEach(btn => {
+      btn.addEventListener("click", toggleDarkMode);
+    });
+  });
+
+// ==================
+// Pincode logica
+// ==================
+function checkPin() {
+  const pinInput = document.getElementById("pin");
+  const pin = pinInput.value;
+  const juistePin = "1234"; // pas dit aan naar jouw pincode
+  const errorMsg = document.getElementById("error");
+
+  if (pin === juistePin) {
+    document.getElementById("geheim").style.display = "block";
+    document.getElementById("pincodeBox").style.display = "none";
   } else {
-    localStorage.setItem("theme", "light");
+    errorMsg.textContent = "Foute code!";
+    pinInput.value = ""; 
+    pinInput.focus();
   }
 }
 
-// Bij laden van de pagina voorkeur toepassen
+// Enter-toets detecteren
+document.getElementById("pin").addEventListener("keypress", function(event) {
+  if (event.key === "Enter") {
+    checkPin();
+  }
+});
+
+// Foutmelding verwijderen bij typen
+document.getElementById("pin").addEventListener("input", function() {
+  document.getElementById("error").textContent = "";
+});
+
+// ==================
+// Dark mode toggle + onthouden
+// ==================
+function toggleDarkMode() {
+  document.body.classList.toggle("dark");
+
+  if (document.body.classList.contains("dark")) {
+    localStorage.setItem("darkMode", "enabled");
+  } else {
+    localStorage.setItem("darkMode", "disabled");
+  }
+}
+
+// ==================
+// Dark mode bij laden toepassen
+// ==================
 window.addEventListener("DOMContentLoaded", function() {
-  const savedTheme = localStorage.getItem("theme");
-  if (savedTheme === "dark") {
+  if (localStorage.getItem("darkMode") === "enabled") {
     document.body.classList.add("dark");
   }
-
-  // Sidebar automatisch inladen
-  fetch("sidebar.html")
-    .then(response => response.text())
-    .then(data => {
-      document.getElementById("sidebar-container").innerHTML = data;
-
-      // Nu bestaat de sidebar, selecteer hem
-      const sidebar = document.querySelector('.sidebar');
-      const menuBtn = document.querySelector('.menu-btn');
-
-      if (menuBtn && sidebar) {
-        // Hamburger knop functionaliteit
-        menuBtn.addEventListener('click', () => {
-          sidebar.classList.toggle('active');
-        });
-      }
-    })
-    .catch(error => console.error("Sidebar kon niet geladen worden:", error));
 });
