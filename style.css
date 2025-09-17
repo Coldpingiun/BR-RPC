@@ -50,12 +50,11 @@ body {
 
 .center-wrapper {
   display: flex;
-  justify-content: center; /* horizontaal centreren */
-  align-items: center;     /* verticaal centreren */
-  min-height: 100vh;       /* neemt de volle schermhoogte */
+  justify-content: center;  /* horizontaal centreren */
+  align-items: center;      /* verticaal centreren */
+  height: 100vh;            /* neemt de hele schermhoogte */
 }
 
-/* Pincode-box */
 #pincodeBox {
   max-width: 400px;
   width: 100%;
@@ -64,9 +63,8 @@ body {
   border-radius: 8px;
   background: #272727;
   text-align: center;
-  align-items: center;
-  justify-content: center;
 }
+
 
 /* Verborgen content */
 #geheim {
