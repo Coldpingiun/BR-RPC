@@ -48,13 +48,6 @@ body {
   box-sizing: border-box;
 }
 
-.center-wrapper {
-  display: flex;
-  justify-content: center;  /* horizontaal centreren */
-  align-items: center;      /* verticaal centreren */
-  height: 100vh;            /* neemt de hele schermhoogte */
-}
-
 #pincodeBox {
   max-width: 400px;
   width: 100%;
