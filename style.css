@@ -43,7 +43,7 @@ body {
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  margin-left: 290px;
+  margin-left: auto;
   padding: 20px;
   box-sizing: border-box;
 }
