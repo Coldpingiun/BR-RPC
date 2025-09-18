@@ -47,22 +47,6 @@ body {
   padding: 20px;
   box-sizing: border-box;
 }
-
-#pincodeBox {
-  max-width: 400px;
-  width: 100%;
-  padding: 15px;
-  border: 1px solid #3a3a3a;
-  border-radius: 8px;
-  background: #272727;
-  text-align: center;
-}
-
-
-/* Verborgen content */
-#geheim {
-  display: none;
-  margin-top: 20px;
   
 }
 
