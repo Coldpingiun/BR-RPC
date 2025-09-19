@@ -100,7 +100,7 @@ img, video {
   }
 
   p {
-  line-height: normal; 
+  line-height: 1.0; 
   }
 
   .hamburger {
