@@ -64,8 +64,8 @@ body {
 .hamburger {
   display: none;
   position: fixed;
-  top: 15px;
-  left: 20px;
+  top: 10px;
+  left: 10px;
   z-index: 1100;
   background: #ddd;
   border: none;
@@ -93,10 +93,14 @@ img, video {
 
   .content {
     margin-left: 0;
-    margin-top: 12;
+    margin-top: 15px;
     padding: 15px;
     align-items: flex-start;
     justify-content: flex-start;
+  }
+
+  p {
+  line-height: normal; 
   }
 
   .hamburger {
