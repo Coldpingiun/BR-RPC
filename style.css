@@ -97,7 +97,6 @@ img, video {
     padding: 15px;
     align-items: flex-start;
     justify-content: flex-start;
-    line-height: 1.8;
   }
 
 
@@ -107,5 +106,5 @@ img, video {
 }
 
 p {
-  line-height: 0.1; 
+  line-height: 1px; 
 }
