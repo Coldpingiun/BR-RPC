@@ -97,11 +97,9 @@ img, video {
     padding: 15px;
     align-items: flex-start;
     justify-content: flex-start;
+    line-height: 1.8;
   }
 
-  p {
-  line-height: 1.8; 
-  }
 
   .hamburger {
     display: block;
