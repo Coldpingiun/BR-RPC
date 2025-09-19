@@ -86,6 +86,7 @@ img, video {
     width: 220px;
     transform: translateX(-100%);
     z-index: 1000;
+    overflow-y: auto;
   }
   .sidebar.active {
     transform: translateX(0);
