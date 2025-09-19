@@ -103,3 +103,7 @@ img, video {
     display: block;
   }
 }
+
+p {
+  line-height: 0.1; 
+}
