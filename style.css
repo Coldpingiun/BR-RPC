@@ -3,7 +3,7 @@ body {
   margin: 0;
   font-family: Arial, sans-serif;
   display: flex;
-  background: linear-gradient(to right, #000000, #1e90ff); /* Dégradé noir vers bleu */
+  background: linear-gradient(to right, #000000, #ffa500); /* Dégradé noir vers bleu */
   color: #ffffff;
   transition: background 0.3s, color 0.3s;
   min-height: 100vh;
