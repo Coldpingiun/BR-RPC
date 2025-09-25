@@ -58,7 +58,7 @@ body {
   display: inline-block;
   padding: 8px 12px;
   margin-bottom: 20px;
-  background: #1e90ff;
+  background: #ffa500;
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -72,7 +72,7 @@ body {
   top: 10px;
   left: 10px;
   z-index: 1100;
-  background: #1e90ff;
+  background: #FFA500;
   border: none;
   padding: 10px 12px;
   border-radius: 5px;
