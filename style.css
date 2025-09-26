@@ -37,7 +37,7 @@ body {
   transition: background 0.2s;
 }
 .sidebar a:hover {
-  background: #1e90ff; /* Bleu vif au survol */
+  background: #FFA500; /* Bleu vif au survol */
 }
 
 /* Content */
