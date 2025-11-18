@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <title>BR:RPC</title>
+    <link id="favicon" rel="icon" sizes="16x16" href="../img/BR_RPC_round.png">
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="https://kit.fontawesome.com/c64b81933c.js" crossorigin="anonymous"></script>
+    <!-- Latest compiled and minified CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+
+<body>
+    <header>
+        <div class="sidebar">
+            <!-- Offcanvas Sidebar -->
+            <div class="offcanvas offcanvas-start text-bg-dark" id="demo">
+                <div class="offcanvas-header">
+                    <h1 class="offcanvas-title">Menu</h1>
+                    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <a href="#home" class="btn btn-dark" type="button"><i class="fa-solid fa-house"></i>
+                        Home</a>
+
+                    <br><br>
+
+                    <a href="#rules" class="btn btn-dark" type="button"><i class="fa-solid fa-scroll"></i> Rules</a>
+
+                    <br><br>
+
+                    <a href="#links" class="btn btn-dark" type="button"><i
+                            class="fa-solid fa-arrow-up-right-from-square"></i> Links</a>
+
+                    <br><br>
+
+                    <a href="#command" class="btn btn-dark" type="button"><i class="fa-solid fa-gear"></i> Commmand
+                        Guide</a>
+
+                    <br><br>
+
+                    <a href="#punishment" class="btn btn-dark" type="button"><i class="fa-solid fa-gavel"></i>
+                        Punishment</a>
+
+                    <br><br>
+
+                    <a href="#infraction" class="btn btn-dark" type="button"><i class="fa-solid fa-thumbtack"></i>
+                        Infractions</a>
+
+                    <br><br>
+
+                    <a href="#promotion" class="btn btn-dark" type="button"><i class="fa-solid fa-rocket"></i>
+                        Promotions</a>
+
+                    <br><br>
+
+                    <a href="#ranks" class="btn btn-dark" type="button"><i class="fa-solid fa-medal"></i> Ranks</a>
+
+                    <br><br>
+
+                    <a href="#credits" class="btn btn-dark" type="button"><i class="fa-solid fa-sack-dollar"></i>
+                        Credits</a>
+
+                    <br><br>
+
+                    <p id="copyCode"><i class="fa-solid fa-code"></i> Code: <button id="copyBtn"
+                            class="btn btn-secondary mt-2"><b>UYMyMH8Cce</b></button></p>
+
+                </div>
+            </div>
+        </div>
+        <div class="sidebarKnop">
+            <!-- Button to open the offcanvas sidebar -->
+            <button class="btn btn-dark" type="button" data-bs-toggle="offcanvas" data-bs-target="#demo">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <script>
+        const button = document.getElementById('copyBtn');
+        const codeElement = document.querySelector('#copyCode b'); // selecteer alleen de <b> binnen de <p>
+
+        button.addEventListener('click', () => {
+            const text = codeElement.textContent.trim(); // "UYMyMH8Cce"
+            navigator.clipboard.writeText(text)
+                .then(() => {
+                    alert(`Copied: "${text}"`);
+                })
+                .catch(err => {
+                    console.error('Could not copy: ', err);
+                });
+        });
+    </script>
+
+    <script>
+        // Smooth scroll fix for Bootstrap offcanvas
+        document.querySelectorAll('.offcanvas-body a[href^="#"]').forEach(link => {
+            link.addEventListener('click', e => {
+                e.preventDefault(); // voorkom directe jump
+                const target = document.querySelector(link.getAttribute('href'));
+                const offcanvas = bootstrap.Offcanvas.getInstance(document.querySelector('#demo'));
+
+                // sluit eerst de offcanvas
+                if (offcanvas) {
+                    offcanvas.hide();
+                }
+
+                // scroll daarna soepel naar het doel
+                setTimeout(() => {
+                    if (target) target.scrollIntoView({ behavior: 'smooth' });
+                }); // 300ms = tijd die offcanvas neemt om te sluiten
+            });
+        });
+
+        // Optioneel: algemene smooth scroll voor andere links buiten offcanvas
+        document.documentElement.style.scrollBehavior = "smooth";
+    </script>
+
+    <!-- Logo -->
+    <img src="../img/BR_RPC_round.png" id="logo" class="rounded" alt="logo" width="100px">
+
+    <!-- Home -->
+    <section id="home" class="py-5">
+        <div class="container">
+            <h1><i class="fa-solid fa-house"></i> <b>Home</b></h1>
+            <p>Welcome to the staff team of BR-RPC. This handbook outlines everything you need to know as a staff member
+                to maintain professionalism, enforce <br> rules, and support the community effectively.</p>
+            <p>The code to join ingame is: BRRC.</p>
+            <br>
+            <h3><i class="fa-solid fa-square-check"></i> Staff Expectations</h3>
+            <ul>
+                <li>Act mature and professional at all times.</li>
+                <li>Enforce rules fairly without bias or favoritism.</li>
+                <li>Be active and responsive during your shifts or assigned duties.</li>
+            </ul>
+            <p>Represent the server in a respectful and positive manner.</p>
+            <br>
+            <h3><i class="fa-solid fa-link"></i> Chain of Command</h3>
+            <ol>
+                <li>Moderation Team</li>
+                <li>Administration Team</li>
+                <li>Management Team</li>
+                <li>Internal Affairs</li>
+                <li>Chief Of Staff</li>
+                <li>Directive Team</li>
+                <li>Ownership</li>
+            </ol>
+            <h5>Always follow the chain of command when escalating issues.</h5>
+            <br>
+            <h3><i class="fa-solid fa-hourglass-start"></i> Inactivity & Leave Policy</h3>
+            <p>Notify a senior staff member if you’ll be inactive for more than 3 days.</p>
+            <p>Extended inactivity without notice may result in a demotion.</p>
+            <br>
+            <h3><i class="fa-solid fa-scale-balanced"></i> Promotions and Infractions</h3>
+            <p>Promotions are based on activity, professionalism, and judgment.</p>
+            <p>Demotions may occur due to inactivity, abuse, or breaking rules.</p>
+            <br>
+            <h3><i class="fa-solid fa-note-sticky"></i> Final notes</h3>
+            <p>Thank you for volunteering your time to help our community. Your role is vital in keeping the server fun,
+                fair, and safe for everyone.</p>
+            <p>If you're ever unsure about a situation, ask a higher-ranking staff member before acting.</p>
+            <p>Stay professional. Stay fair. Keep the community strong.</p>
+        </div>
+    </section>
+
+    <br><br><br>
+
+    <!-- Rules -->
+    <section id="rules" class="py-5">
+        <div class="container">
+            <h1><i class="fa-solid fa-scroll"></i> <b>Rules</b></h1>
+            <h3><i class="fa-solid fa-shield-halved"></i> General Moderation Guides</h3>
+            <ul>
+                <li>Never punish without reason or valid evidence.</li>
+                <li>Always gather information from both parties.</li>
+                <li>Use in-game commands like view to observe situations.</li>
+                <li>Refer to server rules when making decisions.</li>
+            </ul>
+            <br>
+            <h3><i class="fa-solid fa-comment"></i> Staff Communication & Behavior</h3>
+            <ul>
+                <li>Keep staff chat professional.</li>
+                <li>Do not argue with other staff in public channels.</li>
+                <li>Use DMs or tickets for internal disagreements.</li>
+                <li>Respect all roles, regardless of rank.</li>
+            </ul>
+        </div>
+    </section>
+
+    <br><br><br>
+
+    <section id="links" class="py-5">
+        <div class="container">
+            <h1><i class="fa-solid fa-arrow-up-right-from-square"></i> <b>Links</b></h1>
+            <h3><i class="fa-solid fa-music"></i> Melonly</h3>
+            <p>Click this <a href="https://melonly.xyz/dashboard?join=DSAAXV">link</a> to join our melonly.</p>
+            <img class="linkImg" src="../img/melonly.png" alt="Melonly">
+
+            <br><br>
+
+            <h3><i class="fa-solid fa-gamepad"></i> Roblox</h3>
+            <p>Click this <a href="https://www.roblox.com/communities/34410788/Deeplocks-s-group#!/about">link</a> to
+                join our Roblox Group.</p>
+            <img class="linkImg" src="../img/roblox.png" alt="Roblox">
+        </div>
+    </section>
+
+    <br><br><br>
+
+    <section id="command" class="py-5">
+        <div class="container">
+            <h1><b><i class="fa-solid fa-gear"></i> Commands</b></h1>
+
+            <h3><i class="fa-solid fa-ban"></i> Banned Commands</h3>
+            <p><b>(Using these will result in a termination.)</b></p>
+            <p>:kick all/kick others (only exception is SSD)</p>
+            <p>:ban all/ban others</p>
+            <p>:jail all/jail others</p>
+
+            <br>
+
+            <h3><i class="fa-solid fa-shield"></i> Moderation team commands</h3>
+            <p>:startfire (With Request)</p>
+            <p>:stopfire (With Request or if a fire is causing lag)</p>
+            <p>:killogs or :kl</p>
+            <p>:h (Note)</p>
+            <p>:tp</p>
+            <p>:pm (Allowed off duty)</p>
+            <p>:refresh</p>
+            <p>:bring</p>
+            <p>:heal</p>
+            <p>:kick</p>
+            <p>:unwanted</p>
+            <p>:wanted</p>
+            <p>:load</p>
+            <p>:respawn</p>
+            <p>:commands or :cmds</p>
+            <p>:mods (Allowed off duty)</p>
+            <p>:admins (Allowed off duty)</p>
+            <p>:bans</p>
+            <p>:logs (Allowed off duty)</p>
+            <p>:tocar</p>
+
+            <br>
+
+            <h3><i class="fa-solid fa-landmark"></i> Administration team commands</h3>
+            <p>:ban</p>
+            <p>:m (With Permission from a HR+)</p>
+            <p>:pt (Can be done, max allowed value 500)</p>
+            <p>:h (No permission needed but if used without SPaG and for unprofessional things, will result in serious
+                infractions.)</p>
+
+            <br>
+
+            <h3><i class="fa-solid fa-user-group"></i> HR+ team commands</h3>
+            <p>:weather</p>
+            <p>:time</p>
+            <p>:startnearfire</p>
+
+            <br>
+
+            <h3><i class="fa-solid fa-pen-fancy"></i> Director+ team commands</h3>
+            <p>:jail</p>
+            <p>:heal all</p>
+            <p>:load all</p>
+            <p>:refresh all</p>
+            <p>:bring all (Can be used by any SHR for STS/event only)</p>
+
+            <br>
+
+            <h3><i class="fa-solid fa-clipboard"></i> Note:</h3>
+            <p>All staff can use :h for advertisement purposes and to clear scenes, most advertisements and clear
+                messages can be found inside</p>
+            <p>the #game-messages channel in discord.</p>
+            <p>This doesn't require permission from HR but will result in infractions if used without SPaG or
+                unprofessionally.</p>
+        </div>
+    </section>
+
+    <br><br><br>
+
+    <section id="punishment" class="py-5">
+        <div class="container">
+            <h1><b><i class="fa-solid fa-gavel"></i> Punishment</b></h1>
+
+            <h3>Examples</h3>
+            <p>You are being warned for .</p>
+            <p>You are being kicked for . Please don't join back in 30 minutes.</p>
+            <p>You are being banned for .</p>
+            <h5>Fill reasons in behind the dots (.)</h5>
+
+            <br>
+
+            <h3>RDM</h3>
+            <p>1st offense: warning</p>
+            <p>2nd offense: warning</p>
+            <p>3rd offense: kick</p>
+
+            <br>
+
+            <h3>VDM</h3>
+            <p>1st offense: warning</p>
+            <p>2nd offense: warning</p>
+            <p>3rd offense: kick</p>
+
+            <br>
+
+            <h3>FRP</h3>
+            <p>1st offense: warning</p>
+            <p>2nd offense: warning</p>
+            <p>3rd offense: kick</p>
+
+            <br>
+
+            <h3>LTAP</h3>
+            <p>1st offense: ban</p>
+
+            <br>
+
+            <h3>Safezone killing</h3>
+            <p>1st offense: load + warning</p>
+            <p>2nd offense: wanted + warning</p>
+            <p>3rd offense: kick</p>
+
+            <br>
+
+            <h3>NITRP</h3>
+            <p>1st offense: Kick/Ban (Depending Severity)</p>
+            <p>2nd offense: ban</p>
+
+            <br>
+
+            <h3>Member disrespect</h3>
+            <p>1st offense: warning</p>
+            <p>2nd offense: warning</p>
+            <p>3rd offense: kick</p>
+            <p>4th offense: ban</p>
+
+            <br>
+
+            <h3>Staff disrespect</h3>
+            <p>1st offense: kick</p>
+            <p>2nd offense: ban</p>
+
+            <br>
+
+            <h3>Breaking Roblox ToS</h3>
+            <p>1st offense: ban</p>
+
+            <br>
+
+            <h3>Bypassing Roblox Filter</h3>
+            <p>1st offense: warning</p>
+
+            <br>
+
+            <h3>Towing Staff Vehicles</h3>
+            <p>1st offense: kick</p>
+            <p>2nd offense: ban</p>
+
+            <br>
+
+            <h3>Using exotics: (Civilian & LEOs)</h3>
+            <p>1st offense: Verbal Warning & Forced to Change</p>
+            <p>2nd offense: Warning & Forced to Change</p>
+            <p>3rd offense: kick</p>
+
+            <br>
+
+            <h3>Using Restricted Weapons or SWAT Gear and Weapons:</h3>
+            <p>1st offense: Verbal Warning & Forced to Change gun</p>
+            <p>2nd offense: Warning & Forced to Change gun</p>
+            <p>3rd offense: kick</p>
+
+            <br>
+
+            <h3>Impersonating Staff</h3>
+            <p>1st offense: Tell them to change
+            <h6>(only if they were wearing uniform or livery otherwise ban if they were acting as staff)</h6>
+            </p>
+            <p>2nd offense: ban</p>
+
+            <br>
+
+            <h3>Staff Evasion: (Evading Staff and their Vehicle etc.)</h3>
+            <p>1st offense: kick</p>
+
+            <br>
+
+            <h3>Not listening to staff</h3>
+            <p>Normal staff: warning</p>
+            <p>HR staff: kick</p>
+            <p>Leadership/SHR: ban</p>
+        </div>
+    </section>
+
+    <br><br><br>
+
+    <section id="infraction" class="py-5">
+        <div class="container">
+            <h1><b><i class="fa-solid fa-thumbtack"></i> Infractions</b></h1>
+            <p>This Infraction Handbook ensures fair and just infractions for every staff member within the server. If
+                the handbook does not specifically state a harsher infraction for a 2nd, 3rd, 4th, etc., offense, the
+                infraction will remain the same.</p>
+
+            <h3>Warnings</h3>
+            <ul>
+                <li>Failure to Respect CoC (Chain of Command)</li>
+                <li>Shift Grinding (15+ Minutes)</li>
+                <li>Chatting in Logging Channels</li>
+                <li>Being On-Duty While AFK</li>
+                <li>Logging wrong punishment</li>
+                <li>Randomly Speaking in Ticket</li>
+                <li>Using heal even with off duty commands</li>
+                <li>Using off duty commands on, on-duty staff (without just cause)</li>
+                <li>Asking for promotions</li>
+            </ul>
+
+            <br>
+
+            <h3>Strikes</h3>
+            <ul>
+                <li>Receiving a Warning Off-Duty (In-Game)</li>
+                <li>Staff Disrespect (1st Offense)</li>
+                <li>Staff Disrespect (2nd Offense)</li>
+                <li>Violating the Staff Code of Conduct (Mild)</li>
+                <li>Violating the Staff Handbook (Mild)</li>
+                <li>Member Disrespect (1st Offense)</li>
+                <li>Member Disrespect (2nd Offense)</li>
+                <li>Shift Grinding (1 Hour)</li>
+                <li>Shift Grinding (12 Hour = 2 strikes)</li>
+                <li>Using Commands While Off-Duty</li>
+                <li>Failure to Log In-Game Punishments</li>
+                <li>Unprofessional</li>
+                <li>Abuse of Commands (Minor)</li>
+                <li>Inactivity / Failure to Meet Quota (Minor)</li>
+                <li>Logging Wrong Punishment 2nd Offense or more</li>
+                <li>Randomly Speaking in Ticket 2nd offense or more</li>
+                <li>Spamming Mod calls but not handling them</li>
+                <li>Trolling Staff Applications (2 strikes)</li>
+                <li>Leadership Disrespect (Minor)</li>
+            </ul>
+
+            <br>
+
+            <h3>Demotions</h3>
+            <ul>
+                <li>Staff Disrespect (3rd Offense)</li>
+                <li>Member Disrespect (3rd Offense)</li>
+                <li>Violating the Staff Code of Conduct (Major)</li>
+                <li>Violating the Staff Handbook (Major)</li>
+                <li>Abuse of Commands (Major)</li>
+                <li>Inactivity / Failure to Meet Quota (Major)</li>
+                <li>Leadership Disrespect (Major)</li>
+            </ul>
+
+            <br>
+
+            <h3>Terminations</h3>
+            <ul>
+                <li>Violating the Staff Code of Conduct (Major)</li>
+                <li>Violating the Staff Handbook (Extreme)</li>
+                <li>Adding Roles to Oneself (Major)</li>
+                <li>Issuing Unlogged Infractions / Promotions (Major)</li>
+                <li>Abuse of Commands (Extreme)</li>
+                <li>Inactivity / Failure to Meet Quota (Extreme)</li>
+            </ul>
+
+            <br>
+
+            <h3>Blacklist (Server-Wide/staff)</h3>
+            <ul>
+                <p>Anyone can be infracted for doing any of the following below in DMs / other servers.</p>
+                <li>Engaging in Pedophilia</li>
+                <li>Issuing Death Threats / Wishing Death Upon Someone</li>
+                <li>Leaking Personal Information</li>
+                <li>Violating Discord & Roblox ToS</li>
+                <li>Using Banned Commands</li>
+            </ul>
+
+            <br>
+
+            <h3>Role Removal</h3>
+            <ul>
+                <li>Adding Roles to Oneself (Minor)</li>
+                <li>Issuing Unlogged Infractions / Promotions (Minor)</li>
+                <li>Leaking Classified Materials / GC's / Investigations</li>
+            </ul>
+        </div>
+    </section>
+
+    <br><br><br>
+
+    <section id="promotion" class="py-5">
+        <div class="container">
+            <h1><b><i class="fa-solid fa-rocket"></i> Promotions</b></h1>
+            <p>This Promotion Handbook ensures fair and just promotions for every staff member within the server. If the
+                handbook does not specifically state faster promotion eligibility for repeated excellence, the
+                requirements will remain the same.</p>
+
+            <h3>Minor promotions (Recognition & Trust Growth)</h3>
+            <p>These are small advancements typically within the same tier or to the next entry rank.</p>
+            <ul>
+                <li>Consistent Professionalism in Tickets</li>
+                <li>Meeting Weekly Quota (3 Weeks Consecutive)</li>
+                <li>Positive Community Feedback (Multiple Members)</li>
+                <li>Completing Assigned Trainings</li>
+                <li>Going Above Expectations in Duties</li>
+                <li>Assisting Lower-Ranked Staff With Knowledge</li>
+            </ul>
+
+            <br>
+
+            <h3>Major Promotions (Leadership Growth)</h3>
+            <p>These are significant advancements to higher staff levels (Supervisor, Management, or Directive)</p>
+            <ul>
+                <li>Serving 1 Month Without Infractions</li>
+                <li>Hosting Trainings & Sessions Successfully (3+)</li>
+                <li>Outstanding Professionalism & Maturity</li>
+                <li>Consistently Exceeding Quotas (4 Weeks Consecutive)</li>
+                <li>Positive Feedback From Leadership Team</li>
+                <li>Taking Initiative in Events, Projects, or Department Growth</li>
+            </ul>
+
+            <br>
+
+            <h3>Leadership Promotions (HR, Directive, & Executive)</h3>
+            <p>Reserved for exceptional staff who demonstrate long-term dedication and leadership ability.</p>
+            <ul>
+                <li>2+ Months of Active Service Without Infractions</li>
+                <li>Proven Record of Hosting Events/Trainings Regularly</li>
+                <li>Demonstrated Conflict Resolution Skills</li>
+                <li>Mentorship of Lower Staff Ranks</li>
+                <li>Leadership Approval & Vote of Confidence</li>
+            </ul>
+
+            <br>
+
+            <h3>Automatic Promotions</h3>
+            <p>These are guaranteed promotions when the listed conditions are met.</p>
+            <ul>
+                <li>Staff Member of the Month</li>
+                <li>Completing Leadership Training Program</li>
+                <li>Outstanding Event Contribution (Approved by Directive/Exec)</li>
+                <li>Successful Department Leadership (if assigned)</li>
+            </ul>
+
+            <br>
+
+            <h3>Promotion Denials & Delays</h3>
+            <p>Promotions may be denied or delayed if any of the following apply:</p>
+            <ul>
+                <li>Active Infractions Within the Last 2 Weeks</li>
+                <li>Failure to Meet Basic Quotas</li>
+                <li>Negative Community Feedback</li>
+                <li>Poor Professionalism in Tickets or Sessions</li>
+            </ul>
+
+            <br>
+
+            <h3>Role Removal</h3>
+            <p>Roles may be removed if promotions were gained unfairly or performance drops significantly.</p>
+            <ul>
+                <li>Failure to Maintain Activity Post-Promotion</li>
+                <li>Abuse of Elevated Permissions</li>
+                <li>Multiple Reports of Leadership Abuse</li>
+                <li>Failure to Meet Standards of Conduct</li>
+            </ul>
+        </div>
+    </section>
+
+    <br><br><br>
+
+    <section id="ranks" class="py-5">
+        <div class="container">
+            <h1><b><i class="fa-solid fa-medal"></i> Ranks</b></h1>
+
+            <h3>Different types of ranks/roles.</h3>
+            <h6><i><b>Please remain respectful <i>Staff Team</i></b></i></h6>
+            <p>Credits: Stone</p>
+
+            <br><br>
+
+            <p>Trial Moderators: LR-Low Rank</p>
+            <p>Moderation Team: LR-Low rank</p>
+
+            <br><br>
+
+            <p>Trial Administrators: MR-Middle Ranking</p>
+            <p>Administration Team: MR-Middle Ranking</p>
+
+            <br><br>
+
+            <p>Trial Management: MR-Middle Ranking</p>
+            <p>Management Team: LHR-Low High Ranking</p>
+
+            <br><br>
+
+            <p>Trial Deputy Director: LHR-Low High Ranking</p>
+            <p>Deputy Directive Team: LHR-Low Ranking</p>
+
+            <br><br>
+
+            <p>Trial IA: LHR-Low High Ranking</p>
+            <p>IA Team: LHR-Low High Ranking</p>
+
+            <br><br>
+
+            <p>Staff Supervisor: MHR-Middle High Ranking</p>
+            <p>Chief of staff: MHR-Middle High Ranking</p>
+            <p>Staff Training Supervisor Team: MHR-Middle High Ranking</p>
+
+            <br><br>
+
+            <p>Trial Director: MHR-Middle High Rank</p>
+            <p>Directive Team: HR-High Ranking</p>
+
+            <br><br>
+
+            <p>Trial Executive Officer: SHR-High Ranking</p>
+            <p>Executive Officer Team: SHR-High Ranking</p>
+
+            <br><br>
+
+            <p>Specialist Team: SHR-High Ranking</p>
+
+            <br><br>
+
+            <p>Trial Chief Executive Officer: SHR-Super High Ranking</p>
+            <p>Chief Executive Officer: SHR-Super High Ranking</p>
+
+            <br><br>
+
+            <p>Ownership Team: SHR+</p>
+            <p>Co Founder Assistant: SHR+</p>
+            <p>Founder Assistant: SHR+</p>
+            <p>Co Founder: SHR++</p>
+            <p>Founder: SHR++</p>
+
+            <br><br>
+
+            <p>Owner: SHR++</p>
+        </div>
+    </section>
+
+    <br><br><br>
+
+    <section id="credits" class="py-5">
+        <div class="container">
+            <h1><b><i class="fa-solid fa-sack-dollar"></i> Credits</b></h1>
+            <h3>Website developer:</h3>
+            <p>Nopsand123</p>
+
+            <br>
+
+            <h3>Idea giver:</h3>
+            <p>StoneUI_Camera</p>
+
+            <br>
+
+            <h3>Owner</h3>
+            <p>Astrenomical</p>
+        </div>
+    </section>
+</body>

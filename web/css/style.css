@@ -1,0 +1,44 @@
+@font-face {
+    font-family: space;
+    src: url('../portfolio/fonts/SpaceGrotesk-VariableFont_wght.ttf');
+}
+
+body {
+    font-family: space;
+    background-color: black !important;
+    margin: 0;
+    scroll-behavior: smooth !important;
+    color: white !important;
+}
+
+header {
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+    right: 0;
+    height: 5rem;
+    z-index: 9;
+}
+
+#logo{
+    position: fixed;
+    top: 2rem;
+    right: 2rem;
+}
+
+p {
+    margin-top: 0;
+    margin-bottom: 0 !important;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+section {
+  scroll-margin-top: 80px; /* hoogte van je vaste header */
+}
+
+.linkImg{
+    width: 200px;
+}
