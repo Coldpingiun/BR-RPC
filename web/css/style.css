@@ -5,11 +5,10 @@
 
 body {
     font-family: space;
-    background-color: black !important;
     margin: 0;
-    scroll-behavior: smooth !important;
-    color: white !important;
+    scroll-behavior: smooth;
 }
+
 
 header {
     position: fixed;
