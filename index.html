@@ -133,7 +133,7 @@
     <section id="welcome">
         <div class="landingsPage"></div>
     </section>
-    
+
     <!-- Home -->
     <section id="home" class="py-5">
         <div class="container">
@@ -695,22 +695,37 @@
     </section>
 
     <script>
-        // On page load: set theme from saved preference or default to dark
-        (function(){
+        (function () {
             const htmlElement = document.documentElement;
             const toggleBtn = document.getElementById('darkModeToggle');
+            const icon = document.getElementById('darkModeIcon');
+
+            // Lees opgeslagen thema of default naar dark
             const savedTheme = localStorage.getItem('theme') || 'dark';
             htmlElement.setAttribute('data-bs-theme', savedTheme);
-            toggleBtn.textContent = savedTheme === 'dark' ? 'Light Mode' : 'Dark Mode';
- 
+
+            // Set juiste icoon
+            icon.className = savedTheme === 'dark'
+                ? 'fa-solid fa-sun'
+                : 'fa-solid fa-moon';
+
             toggleBtn.addEventListener('click', () => {
                 const currentTheme = htmlElement.getAttribute('data-bs-theme');
                 const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
                 htmlElement.setAttribute('data-bs-theme', newTheme);
                 localStorage.setItem('theme', newTheme);
-                toggleBtn.textContent = newTheme === 'dark' ? 'Light Mode' : 'Dark Mode';
+
+                // Wissel icoon
+                icon.className = newTheme === 'dark'
+                    ? 'fa-solid fa-sun'
+                    : 'fa-solid fa-moon';
             });
         })();
     </script>
-    
+
+
+    <button id="darkModeToggle" class="dark-toggle">
+        <i id="darkModeIcon" class="fa-solid fa-moon"></i>
+    </button>
+
 </body>
